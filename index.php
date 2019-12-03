@@ -1,10 +1,3 @@
-<?php
-$metric = "metric";
-$forecast = "http://api.openweathermap.org/data/2.5/forecast?q=" . $_GET["input"] . "&units=metric&APPID=c2fff92c5a7f07260586d677cc8a10eb";
-$json = file_get_contents($forecast);
-$jsondata = json_decode($json);
-$list = $jsondata->list;
-?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,13 +8,26 @@ $list = $jsondata->list;
     <title>Document</title>
 </head>
 <body>
+<h1>Weather forecast app</h1>
 
-<h1>The Weather forecast for <?php echo $_GET["input"] ?></h1>
+<form action="" method="post">
+    City <input type="text" name="input" id="input"><br>
+</form> 
 
-<div id="parent">
 <?php
 
-for( $i = 0; $i < count($list); $i+=8){ ?>
+if (isset($_POST["input"])) { ?>
+
+    <h2>The Weather forecast for <?php echo $_POST["input"] ?></h2>
+    <div id="parent">
+
+<?php
+    $forecast = "http://api.openweathermap.org/data/2.5/forecast?q=" . $_POST["input"] . "&units=metric&APPID=c2fff92c5a7f07260586d677cc8a10eb";
+        $json = file_get_contents($forecast);
+        $jsondata = json_decode($json);
+        $list = $jsondata->list;
+
+    for( $i = 0; $i < count($list); $i+=8){ ?>
     <div class="card">
     <?php
     $date = $list[$i]->dt;
@@ -34,7 +40,7 @@ for( $i = 0; $i < count($list); $i+=8){ ?>
     <p>Wind: <?php echo($wind); ?> km/h</p> 
     <p><?php echo($weather); ?></p>  
     </div>
-<?php } ?>
+<?php } }?>
 </div>
 </body>
 </html>
