@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: blue;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    padding: 20px;
+    margin: 20px;
+    font-size: 2.5em;
+    color: lightgoldenrodyellow;
+}
+
+#parent{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.card{
+    width: 250px;
+    background-color: rgb(247, 236, 222);
+    border: black 2px solid;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+.card p {
+    padding: 5px;
+    margin: 10px;
+}
