@@ -8,17 +8,18 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Weather forecast app</h1>
+    <div class="layer">
+<h1>Weather Forecast app</h1>
 
 <form action="" method="post">
-    City <input type="text" name="input" id="input"><br>
+    <input type="text" name="input" id="input" placeholder="Type your city"><br>
 </form> 
-
+<div id="divider"></div>
 <?php
 
 if (isset($_POST["input"])) { ?>
 
-    <h2>The Weather forecast for <?php echo $_POST["input"] ?></h2>
+    <h2 id="strong"> <?php echo $_POST["input"] ?></h2>
     <div id="parent">
 
 <?php
@@ -35,12 +36,13 @@ if (isset($_POST["input"])) { ?>
     $wind = $list[$i]->wind->speed;
     $weather = $list[$i]->weather[0]->description;
     ?>
-    <p style="font-weight: bold">Date: <?php echo(date("d-m",$date)); ?></p> 
+    <p style="font-weight: bold">Date: <?php echo(date("d/m",$date)); ?></p> 
     <p>Temp: <?php echo($temp); ?>°C</p>  
     <p>Wind: <?php echo($wind); ?> km/h</p> 
     <p><?php echo($weather); ?></p>  
     </div>
 <?php } }?>
+</div>
 </div>
 </body>
 </html>
